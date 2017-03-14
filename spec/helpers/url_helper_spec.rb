@@ -1,6 +1,6 @@
 require './lib/helpers/url_helper'
 
-describe SampleHelper  do
+describe UrlHelper  do
 
   before(:each) do
     @dummy_class = Class.new.extend(UrlHelper)

@@ -8,7 +8,7 @@ Dir[File.join(File.dirname(__FILE__), './lib/models', '*.rb')].each {|file| requ
 
 set :haml, :format => :html5
 
-helpers UrlHelper, SampleHelper, DateHelper, EchoHelper
+helpers UrlHelper
 
 get '/' do
   slim :index
@@ -30,31 +30,3 @@ get '/redirections' do
   content_type :json
   Redirection.all.to_json
 end
-
-# get '/second' do
-#   slim :second
-# end
-#
-# get '/sample' do
-#   slim :sample
-# end
-#
-# get '/form' do
-#   slim :form
-# end
-#
-get '/list' do
-  @samples = Sample.all
-  slim :list
-end
-#
-# post '/submit' do
-#   @sample = Sample.new(params[:sample])
-#   if @sample.save
-#     redirect '/list'
-#   else
-#     'An error has occured'
-#   end
-# end
-
-
