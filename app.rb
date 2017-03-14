@@ -18,8 +18,17 @@ post '/generate' do
   content_type :json
 
   @redirection = Redirection.new({:url => params[:url], :short_url => '/' + ('a'..'z').to_a.shuffle[0,6].join})
-  @redirection.to_json
+  if@redirection.save
+    @redirection.to_json
+  else
+    'An error has occured'
+  end
 
+end
+
+get '/redirections' do
+  content_type :json
+  Redirection.all.to_json
 end
 
 # get '/second' do
@@ -34,10 +43,10 @@ end
 #   slim :form
 # end
 #
-# get '/list' do
-#   @samples = Sample.all
-#   slim :list
-# end
+get '/list' do
+  @samples = Sample.all
+  slim :list
+end
 #
 # post '/submit' do
 #   @sample = Sample.new(params[:sample])
