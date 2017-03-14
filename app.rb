@@ -14,28 +14,38 @@ get '/' do
   slim :index
 end
 
-get '/second' do
-  slim :second
+post '/generate' do
+  content_type :json
+
+  @redirection = Redirection.new({:url => params[:url], :short_url => '/' + ('a'..'z').to_a.shuffle[0,6].join})
+  @redirection.to_json
+
 end
 
-get '/sample' do
-  slim :sample
-end
+# get '/second' do
+#   slim :second
+# end
+#
+# get '/sample' do
+#   slim :sample
+# end
+#
+# get '/form' do
+#   slim :form
+# end
+#
+# get '/list' do
+#   @samples = Sample.all
+#   slim :list
+# end
+#
+# post '/submit' do
+#   @sample = Sample.new(params[:sample])
+#   if @sample.save
+#     redirect '/list'
+#   else
+#     'An error has occured'
+#   end
+# end
 
-get '/form' do
-  slim :form
-end
 
-get '/list' do
-  @samples = Sample.all
-  slim :list
-end
-
-post '/submit' do
-  @sample = Sample.new(params[:sample])
-  if @sample.save
-    redirect '/list'
-  else
-    'An error has occured'
-  end
-end

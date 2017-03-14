@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716093302) do
+ActiveRecord::Schema.define(version: 20170314160020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "redirections", force: :cascade do |t|
+    t.string "url"
+    t.string "short_url"
+  end
 
   create_table "samples", force: :cascade do |t|
     t.string "name"
