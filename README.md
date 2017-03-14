@@ -1,27 +1,52 @@
-Sinatra Test App
-================
+# Url Shortener Code Test
+=========================
 
-Simple Ruby application with the following features
+A URL shortening service.
+- It should have a route where you can send a POST request with a URL in the
+  body, which returns a short URL.
 
-    * Sinatra
-    * Hosted on heroku
-    * Slim templates
-    * Sprockets and asset pipeline
-    * SCSS
-    * Jasmine testing
-    * rspec testing
-    * Feature testing
-    * Sample client
-    * Sample database integration (postgres)
-    
-[Sinatra Test App on Heroku](https://guarded-caverns-3516.herokuapp.com/) 
-    
+e.g.
+```
+curl localhost:4000 -XPOST -d '{ "url": "http://www.farmdrop.com" }'
+{ "short_url": "/abc123", "url": "http://www.farmdrop.com" }
+```
+
+- When you send a GET request to a previously returned URL, it should redirect
+  to the POSTed URL.
+
+e.g.
+```
+curl -v localhost:4000/abc123
+...
+< HTTP/1.1 301 Moved Permanently
+...
+< Location: http://www.farmdrop.com
+...
+{ "url": "http://www.farmdrop.com" }
+```
+
 Getting Started
 ---------------
 
 Install dependencies
 
 `bundle install`
+
+Initialise Postgres
+
+`initdb -D /usr/local/var/postgres/`
+
+Create Development db
+ 
+`createdb Development`
+
+Migrate sample table to Development
+
+`db:migrate`
+
+Run locally
+
+`foreman start web`
 
 
 Helpful Commands
@@ -42,10 +67,6 @@ Open App
 Set environment variable
 
 `heroku config:set FOO=BAR`
-
-Run locally
-
-`foreman start web`
 
 For more see
 
