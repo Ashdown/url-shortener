@@ -44,6 +44,14 @@ Migrate sample table to Development
 
 `db:migrate`
 
+Install jsx compiler
+
+`npm install -j jsx`
+
+Run the rake command
+
+`rake compilejsx`
+
 Run locally
 
 `foreman start web`
