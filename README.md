@@ -16,6 +16,14 @@ Simple Ruby application with the following features
     
 [Sinatra Test App on Heroku](https://guarded-caverns-3516.herokuapp.com/) 
     
+Getting Started
+---------------
+
+Install dependencies
+
+`bundle install`
+
+
 Helpful Commands
 ----------------
 
