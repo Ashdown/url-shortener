@@ -8,7 +8,7 @@ Dir[File.join(File.dirname(__FILE__), './lib/models', '*.rb')].each {|file| requ
 
 set :haml, :format => :html5
 
-helpers SampleHelper, DateHelper, EchoHelper
+helpers UrlHelper, SampleHelper, DateHelper, EchoHelper
 
 get '/' do
   slim :index
@@ -17,7 +17,7 @@ end
 post '/generate' do
   content_type :json
 
-  @redirection = Redirection.new({:url => params[:url], :short_url => '/' + ('a'..'z').to_a.shuffle[0,6].join})
+  @redirection = Redirection.new({:url => params[:url], :short_url => random_url()})
   if@redirection.save
     @redirection.to_json
   else
