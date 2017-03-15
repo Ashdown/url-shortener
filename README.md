@@ -25,6 +25,10 @@ curl -v localhost:4000/abc123
 { "url": "http://www.farmdrop.com" }
 ```
 
+Links
+-----
+[App on Heroku](https://blooming-oasis-41546.herokuapp.com/pdated )
+
 Getting Started
 ---------------
 
