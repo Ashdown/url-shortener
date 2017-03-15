@@ -16,6 +16,15 @@
                     //console.log('parsing failed', ex);
                 });
 
+        },
+        post: function() {
+            fetch('/generate', {
+                method: 'POST',
+                body: new FormData(document.getElementsByClassName('generate-form')[0])
+            }).then(function(response) {
+                //after???
+            });
+
         }
     }
 })(React, App, fetch, Request);
