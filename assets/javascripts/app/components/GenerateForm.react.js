@@ -9,11 +9,11 @@
 
             var newUrl = this.refs.urlInput.getDOMNode().value;
 
-            if (newUrl.indexOf('http://' !== 0)){
+            if (newUrl.indexOf('http://') !== 0){
                 this.refs.urlInput.getDOMNode().value = 'http://' + newUrl;
             }
 
-            App.Actions.Url.post();
+            App.Actions.Url.post(this.props.updateCallback);
 
         },
 

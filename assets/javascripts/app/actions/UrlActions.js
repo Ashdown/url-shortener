@@ -17,12 +17,14 @@
                 });
 
         },
-        post: function() {
+        post: function(callback) {
             fetch('/generate', {
                 method: 'POST',
                 body: new FormData(document.getElementsByClassName('generate-form')[0])
             }).then(function(response) {
-                //after???
+                return response.json();
+            }).then(function(data) {
+                callback(data);
             });
 
         }
