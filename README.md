@@ -27,7 +27,7 @@ curl -v localhost:4000/abc123
 
 Links
 -----
-[App on Heroku](https://blooming-oasis-41546.herokuapp.com/pdated )
+[App on Heroku](https://blooming-oasis-41546.herokuapp.com/)
 
 Getting Started
 ---------------
