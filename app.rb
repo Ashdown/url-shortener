@@ -14,6 +14,11 @@ get '/' do
   slim :index
 end
 
+get '/redirections' do
+  content_type :json
+  Redirection.all.to_json
+end
+
 post '/generate' do
   content_type :json
 
@@ -26,7 +31,18 @@ post '/generate' do
 
 end
 
-get '/redirections' do
+get '/:short_url' do
   content_type :json
-  Redirection.all.to_json
+
+  Redirection.all.each do |key, value|
+
+    if(key.short_url == '/' + params[:short_url])
+      redirect key.url
+    end
+
+  end
+
+  redirect '/'
+
 end
+
